@@ -1,39 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Mail, Phone, Calendar, Award } from 'lucide-react';
 import { getPortfolioData } from '@/lib/data';
 import { Personal } from '@/lib/types';
 
 const About = () => {
-  const [data, setData] = useState<Personal | null>(null);
-
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const portfolioData = await getPortfolioData();
-        setData(portfolioData.personal);
-      } catch (error) {
-        console.error('Error loading about data:', error);
-      }
-    };
-    loadData();
-  }, []);
-
-  if (!data) {
-    return (
-      <section id="about" className="section-padding">
-        <div className="container-custom">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 dark:bg-dark-700 rounded w-1/4 mb-8"></div>
-            <div className="h-4 bg-gray-200 dark:bg-dark-700 rounded w-full mb-4"></div>
-            <div className="h-4 bg-gray-200 dark:bg-dark-700 rounded w-3/4"></div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  // Get data directly - no need for async loading
+  const data = getPortfolioData().personal;
 
   const infoItems = [
     { icon: MapPin, label: 'Location', value: data.location },
@@ -112,59 +86,47 @@ const About = () => {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <div>
-              <h3 className="text-2xl font-bold mb-4 text-dark-900 dark:text-white">
-                Who I Am
+            <div className="card p-8">
+              <h3 className="text-2xl font-bold text-dark-900 dark:text-white mb-6">
+                My Story
               </h3>
-              <p className="text-lg text-dark-600 dark:text-gray-300 leading-relaxed mb-6">
-                {data.bio}
-              </p>
-            </div>
-
-            {/* Key Highlights */}
-            <div className="space-y-4">
-              <h4 className="text-xl font-semibold text-dark-900 dark:text-white">
-                What I Do
-              </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  'Full Stack Development',
-                  'UI/UX Design',
-                  'Cloud Architecture',
-                  'Performance Optimization',
-                  'Team Leadership',
-                  'Code Review & Mentoring'
-                ].map((skill, index) => (
-                  <motion.div
-                    key={skill}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-center space-x-3 p-3 rounded-lg bg-gray-50 dark:bg-dark-700"
-                  >
-                    <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
-                    <span className="text-dark-700 dark:text-gray-300 font-medium">{skill}</span>
-                  </motion.div>
-                ))}
+              <div className="space-y-4 text-dark-600 dark:text-gray-300 leading-relaxed">
+                <p>
+                  {data.bio}
+                </p>
+                <p>
+                  I'm passionate about creating user-friendly applications that solve real-world problems. 
+                  My approach combines technical expertise with creative problem-solving, ensuring that 
+                  every project I work on delivers exceptional value to users and stakeholders.
+                </p>
+                <p>
+                  When I'm not coding, you can find me exploring new technologies, contributing to open-source 
+                  projects, or sharing knowledge with the developer community. I believe in continuous learning 
+                  and staying up-to-date with the latest industry trends and best practices.
+                </p>
               </div>
             </div>
 
-            {/* CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="pt-4"
-            >
-              <a
-                href="#contact"
-                className="btn-primary inline-flex items-center space-x-2"
-              >
-                <span>Let's Work Together</span>
-              </a>
-            </motion.div>
+            {/* Skills Preview */}
+            <div className="card p-6">
+              <h4 className="text-lg font-semibold text-dark-900 dark:text-white mb-4">
+                What I Do Best
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {['React', 'Next.js', 'TypeScript', 'Node.js', 'Python', 'AWS'].map((skill, index) => (
+                  <motion.span
+                    key={skill}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="px-3 py-1 bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium"
+                  >
+                    {skill}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

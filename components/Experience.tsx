@@ -1,42 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, Award, ExternalLink } from 'lucide-react';
 import { getPortfolioData } from '@/lib/data';
 import { Experience as ExperienceType } from '@/lib/types';
 
 const Experience = () => {
-  const [data, setData] = useState<ExperienceType[]>([]);
-
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const portfolioData = await getPortfolioData();
-        setData(portfolioData.experience);
-      } catch (error) {
-        console.error('Error loading experience data:', error);
-      }
-    };
-    loadData();
-  }, []);
-
-  if (!data.length) {
-    return (
-      <section id="experience" className="section-padding">
-        <div className="container-custom">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 dark:bg-dark-700 rounded w-1/4 mb-8"></div>
-            <div className="space-y-6">
-              {[...Array(3)].map((_, i) => (
-                <div key={i} className="h-32 bg-gray-200 dark:bg-dark-700 rounded"></div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  // Get data directly - no need for async loading
+  const data = getPortfolioData().experience;
 
   return (
     <section id="experience" className="section-padding">
@@ -103,48 +74,37 @@ const Experience = () => {
                     </p>
 
                     {/* Technologies */}
-                    <div className="mb-4">
-                      <h4 className="text-sm font-semibold text-dark-700 dark:text-gray-400 mb-2 uppercase tracking-wide">
-                        Technologies Used
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {experience.technologies.map((tech, techIndex) => (
-                          <motion.span
-                            key={tech}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.3, delay: techIndex * 0.1 }}
-                            viewport={{ once: true }}
-                            className="px-3 py-1 bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm rounded-full font-medium"
-                          >
-                            {tech}
-                          </motion.span>
-                        ))}
-                      </div>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {experience.technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-2 py-1 bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 rounded text-xs font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
                     </div>
 
                     {/* Achievements */}
-                    <div>
-                      <h4 className="text-sm font-semibold text-dark-700 dark:text-gray-400 mb-2 uppercase tracking-wide flex items-center">
-                        <Award size={16} className="mr-1" />
-                        Key Achievements
-                      </h4>
-                      <ul className="space-y-2">
-                        {experience.achievements.map((achievement, achievementIndex) => (
-                          <motion.li
-                            key={achievementIndex}
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.5, delay: achievementIndex * 0.1 }}
-                            viewport={{ once: true }}
-                            className="flex items-start space-x-2 text-sm text-dark-600 dark:text-gray-300"
-                          >
-                            <div className="w-1.5 h-1.5 bg-primary-600 rounded-full mt-2 flex-shrink-0"></div>
-                            <span>{achievement}</span>
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </div>
+                    {experience.achievements && experience.achievements.length > 0 && (
+                      <div className="space-y-2">
+                        <h4 className="text-sm font-semibold text-dark-700 dark:text-gray-300 flex items-center">
+                          <Award size={16} className="mr-2" />
+                          Key Achievements
+                        </h4>
+                        <ul className="space-y-1">
+                          {experience.achievements.map((achievement, achievementIndex) => (
+                            <li
+                              key={achievementIndex}
+                              className="text-sm text-dark-600 dark:text-gray-400 flex items-start"
+                            >
+                              <span className="w-1.5 h-1.5 bg-primary-600 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                              {achievement}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </motion.div>
                 </div>
               </motion.div>
@@ -156,16 +116,16 @@ const Experience = () => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
           viewport={{ once: true }}
           className="text-center mt-16"
         >
           <div className="card p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4 text-dark-900 dark:text-white">
+            <h3 className="text-2xl font-bold text-dark-900 dark:text-white mb-4">
               Ready to Work Together?
             </h3>
             <p className="text-dark-600 dark:text-gray-300 mb-6">
-              I'm always open to discussing new opportunities and exciting projects.
+              I'm always open to new opportunities and exciting projects. Let's discuss how we can create something amazing together.
             </p>
             <a
               href="#contact"

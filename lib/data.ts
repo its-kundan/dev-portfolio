@@ -1,12 +1,12 @@
 import { PortfolioData } from './types';
 
+// Import the JSON data directly - this works reliably in both dev and production
+const portfolioData = require('../public/data.json') as PortfolioData;
+
 export async function getPortfolioData(): Promise<PortfolioData> {
   try {
-    const response = await fetch('/data.json');
-    if (!response.ok) {
-      throw new Error('Failed to fetch portfolio data');
-    }
-    return await response.json();
+    // Return the imported data directly - this works in both dev and production
+    return portfolioData;
   } catch (error) {
     console.error('Error loading portfolio data:', error);
     throw error;

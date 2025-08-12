@@ -1,44 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { GraduationCap, Award, Calendar, BookOpen } from 'lucide-react';
 import { getPortfolioData } from '@/lib/data';
 import { Education as EducationType, Certification } from '@/lib/types';
 
 const Education = () => {
-  const [education, setEducation] = useState<EducationType[]>([]);
-  const [certifications, setCertifications] = useState<Certification[]>([]);
-
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const portfolioData = await getPortfolioData();
-        setEducation(portfolioData.education);
-        setCertifications(portfolioData.certifications);
-      } catch (error) {
-        console.error('Error loading education data:', error);
-      }
-    };
-    loadData();
-  }, []);
-
-  if (!education.length && !certifications.length) {
-    return (
-      <section id="education" className="section-padding">
-        <div className="container-custom">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 dark:bg-dark-700 rounded w-1/4 mb-8"></div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[...Array(4)].map((_, i) => (
-                <div key={i} className="h-32 bg-gray-200 dark:bg-dark-700 rounded"></div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  // Get data directly - no need for async loading
+  const portfolioData = getPortfolioData();
+  const education = portfolioData.education;
+  const certifications = portfolioData.certifications;
 
   return (
     <section id="education" className="section-padding">
@@ -99,9 +70,17 @@ const Education = () => {
                     {edu.school}
                   </p>
                   
-                  <p className="text-dark-600 dark:text-gray-300 leading-relaxed">
+                  <p className="text-dark-600 dark:text-gray-300 text-sm leading-relaxed">
                     {edu.description}
                   </p>
+
+                  {edu.gpa && (
+                    <div className="mt-3 pt-3 border-t border-gray-100 dark:border-dark-700">
+                      <span className="text-sm text-dark-500 dark:text-gray-400">
+                        GPA: <span className="font-semibold text-dark-900 dark:text-white">{edu.gpa}</span>
+                      </span>
+                    </div>
+                  )}
                 </motion.div>
               ))}
             </div>
@@ -115,7 +94,7 @@ const Education = () => {
             viewport={{ once: true }}
           >
             <div className="flex items-center mb-8">
-              <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mr-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center mr-4">
                 <Award className="text-white" size={24} />
               </div>
               <h3 className="text-2xl font-bold text-dark-900 dark:text-white">
@@ -139,58 +118,30 @@ const Education = () => {
                     </h4>
                     <div className="flex items-center space-x-2 text-sm text-dark-500 dark:text-gray-400">
                       <Calendar size={16} />
-                      <span>{cert.date}</span>
+                      <span>{cert.issued}</span>
                     </div>
                   </div>
                   
-                  <p className="text-green-600 dark:text-green-400 font-semibold mb-3">
+                  <p className="text-primary-600 dark:text-primary-400 font-semibold mb-3">
                     {cert.issuer}
                   </p>
                   
-                  <div className="flex items-center space-x-2 text-sm text-dark-500 dark:text-gray-400">
-                    <BookOpen size={16} />
-                    <span>Credential: {cert.credential}</span>
-                  </div>
+                  <p className="text-dark-600 dark:text-gray-300 text-sm leading-relaxed mb-3">
+                    {cert.description}
+                  </p>
+
+                  {cert.credentialId && (
+                    <div className="text-xs text-dark-500 dark:text-gray-400">
+                      Credential ID: {cert.credentialId}
+                    </div>
+                  )}
                 </motion.div>
               ))}
             </div>
-
-            {/* Additional Learning */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="mt-8 card p-6"
-            >
-              <h4 className="text-lg font-bold text-dark-900 dark:text-white mb-4">
-                Continuous Learning
-              </h4>
-              <div className="space-y-3">
-                {[
-                  'Online Courses & Workshops',
-                  'Tech Conferences & Meetups',
-                  'Open Source Contributions',
-                  'Reading Tech Blogs & Books'
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-center space-x-3"
-                  >
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-dark-600 dark:text-gray-300">{item}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
           </motion.div>
         </div>
 
-        {/* Skills Development */}
+        {/* Additional Learning Section */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -198,32 +149,56 @@ const Education = () => {
           viewport={{ once: true }}
           className="mt-16"
         >
-          <div className="card p-8 text-center">
-            <h3 className="text-2xl font-bold mb-4 text-dark-900 dark:text-white">
-              Always Learning, Always Growing
-            </h3>
-            <p className="text-dark-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-              I believe in continuous learning and staying up-to-date with the latest technologies and best practices in the industry.
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { label: 'Years of Experience', value: '5+' },
-                { label: 'Projects Completed', value: '50+' },
-                { label: 'Technologies Mastered', value: '20+' },
-                { label: 'Happy Clients', value: '30+' }
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="text-center"
-                >
-                  <div className="text-3xl font-bold gradient-text mb-1">{stat.value}</div>
-                  <div className="text-sm text-dark-500 dark:text-gray-400">{stat.label}</div>
-                </motion.div>
-              ))}
+          <div className="card p-8">
+            <div className="flex items-center mb-6">
+              <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center mr-4">
+                <BookOpen className="text-white" size={24} />
+              </div>
+              <h3 className="text-2xl font-bold text-dark-900 dark:text-white">
+                Continuous Learning
+              </h3>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="text-lg font-semibold text-dark-900 dark:text-white mb-3">
+                  Online Courses & Platforms
+                </h4>
+                <ul className="space-y-2 text-dark-600 dark:text-gray-300">
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-primary-600 rounded-full mr-3"></span>
+                    Coursera - Machine Learning Specialization
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-primary-600 rounded-full mr-3"></span>
+                    Udemy - Advanced React & TypeScript
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-primary-600 rounded-full mr-3"></span>
+                    AWS Training - Cloud Practitioner
+                  </li>
+                </ul>
+              </div>
+              
+              <div>
+                <h4 className="text-lg font-semibold text-dark-900 dark:text-white mb-3">
+                  Current Focus Areas
+                </h4>
+                <ul className="space-y-2 text-dark-600 dark:text-gray-300">
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-primary-600 rounded-full mr-3"></span>
+                    Advanced TypeScript & React Patterns
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-primary-600 rounded-full mr-3"></span>
+                    Cloud Architecture & DevOps
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-primary-600 rounded-full mr-3"></span>
+                    System Design & Scalability
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </motion.div>
