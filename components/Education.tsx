@@ -118,7 +118,7 @@ const Education = () => {
                     </h4>
                     <div className="flex items-center space-x-2 text-sm text-dark-500 dark:text-gray-400">
                       <Calendar size={16} />
-                      <span>{cert.issued}</span>
+                      <span>{cert.date}</span>
                     </div>
                   </div>
                   
@@ -126,15 +126,9 @@ const Education = () => {
                     {cert.issuer}
                   </p>
                   
-                  <p className="text-dark-600 dark:text-gray-300 text-sm leading-relaxed mb-3">
-                    {cert.description}
-                  </p>
-
-                  {cert.credentialId && (
-                    <div className="text-xs text-dark-500 dark:text-gray-400">
-                      Credential ID: {cert.credentialId}
-                    </div>
-                  )}
+                  <div className="text-xs text-dark-500 dark:text-gray-400">
+                    Credential: {cert.credential}
+                  </div>
                 </motion.div>
               ))}
             </div>

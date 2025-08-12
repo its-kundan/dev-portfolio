@@ -7,7 +7,19 @@ import { Personal } from '@/lib/types';
 
 const Hero = () => {
   // Get data directly - no need for async loading
-  const data = getPortfolioData().personal;
+  let data: Personal;
+  
+  try {
+    data = getPortfolioData().personal;
+  } catch (error) {
+    console.error('Error loading hero data:', error);
+    // Return loading state if data fails to load
+    return (
+      <section id="home" className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+      </section>
+    );
+  }
 
   const scrollToAbout = () => {
     const element = document.querySelector('#about');
