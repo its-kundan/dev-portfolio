@@ -7,23 +7,23 @@ import NavigationWrapper from '@/components/NavigationWrapper'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://alexjohnson.dev'),
-  title: 'Alex Johnson - Full Stack Developer',
+  metadataBase: new URL('https://kundankumar.dev'),
+  title: 'Kundan Kumar - Full Stack Developer',
   description: 'Passionate full-stack developer creating exceptional digital experiences with modern technologies.',
   keywords: ['developer', 'full stack', 'react', 'next.js', 'typescript', 'portfolio'],
-  authors: [{ name: 'Alex Johnson' }],
-  creator: 'Alex Johnson',
+  authors: [{ name: 'Kundan Kumar' }],
+  creator: 'Kundan Kumar',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://alexjohnson.dev',
-    title: 'Alex Johnson - Full Stack Developer',
+    url: 'https://kundankumar.dev',
+    title: 'Kundan Kumar - Full Stack Developer',
     description: 'Passionate full-stack developer creating exceptional digital experiences.',
-    siteName: 'Alex Johnson Portfolio',
+    siteName: 'Kundan Kumar Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Alex Johnson - Full Stack Developer',
+    title: 'Kundan Kumar - Full Stack Developer',
     description: 'Passionate full-stack developer creating exceptional digital experiences.',
   },
   robots: {

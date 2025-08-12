@@ -8,7 +8,7 @@ import { useTheme } from './ThemeProvider';
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, mounted } = useTheme();
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -36,6 +36,23 @@ const Navigation = () => {
     setIsOpen(false);
   };
 
+  // Don't render until mounted to prevent hydration issues
+  if (!mounted) {
+    return (
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-dark-900/80 backdrop-blur-md shadow-lg">
+        <div className="container-custom">
+          <div className="flex items-center justify-between h-16 px-4">
+            <div className="text-xl font-bold gradient-text">KK</div>
+            <div className="flex items-center space-x-4">
+              <div className="w-10 h-10 bg-gray-100 dark:bg-dark-700 rounded-lg animate-pulse"></div>
+              <div className="w-10 h-10 bg-gray-100 dark:bg-dark-700 rounded-lg animate-pulse md:hidden"></div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    );
+  }
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -53,7 +70,7 @@ const Navigation = () => {
             whileHover={{ scale: 1.05 }}
             className="text-xl font-bold gradient-text"
           >
-            AJ
+            KK
           </motion.div>
 
           {/* Desktop Navigation */}
