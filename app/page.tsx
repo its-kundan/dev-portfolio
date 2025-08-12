@@ -6,14 +6,11 @@ import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
 import Education from '@/components/Education';
 import Contact from '@/components/Contact';
-import Navigation from '@/components/Navigation';
 import Loading from '@/components/Loading';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 to-white dark:from-dark-900 dark:to-dark-800">
-      <Navigation />
-      
       <Suspense fallback={<Loading />}>
         <Hero />
         <About />
