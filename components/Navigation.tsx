@@ -3,11 +3,12 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon } from 'lucide-react';
+import { useTheme } from './ThemeProvider';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -23,33 +24,9 @@ const Navigation = () => {
       setScrolled(window.scrollY > 50);
     };
 
-    const handleTheme = () => {
-      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        setIsDark(true);
-        document.documentElement.classList.add('dark');
-      } else {
-        setIsDark(false);
-        document.documentElement.classList.remove('dark');
-      }
-    };
-
     window.addEventListener('scroll', handleScroll);
-    handleTheme();
-
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const toggleTheme = () => {
-    if (isDark) {
-      document.documentElement.classList.remove('dark');
-      localStorage.theme = 'light';
-      setIsDark(false);
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.theme = 'dark';
-      setIsDark(true);
-    }
-  };
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -101,8 +78,9 @@ const Navigation = () => {
               whileTap={{ scale: 0.9 }}
               onClick={toggleTheme}
               className="p-2 rounded-lg bg-gray-100 dark:bg-dark-700 text-dark-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-600 transition-colors duration-200"
+              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             >
-              {isDark ? <Sun size={20} /> : <Moon size={20} />}
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </motion.button>
 
             {/* Mobile Menu Button */}
@@ -111,6 +89,7 @@ const Navigation = () => {
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-dark-700 text-dark-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-600 transition-colors duration-200"
+              aria-label="Toggle mobile menu"
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}
             </motion.button>
