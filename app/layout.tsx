@@ -7,6 +7,7 @@ import NavigationWrapper from '@/components/NavigationWrapper'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://alexjohnson.dev'),
   title: 'Alex Johnson - Full Stack Developer',
   description: 'Passionate full-stack developer creating exceptional digital experiences with modern technologies.',
   keywords: ['developer', 'full stack', 'react', 'next.js', 'typescript', 'portfolio'],
