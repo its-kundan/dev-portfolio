@@ -1,7 +1,7 @@
 import { PortfolioData } from './types';
 
-// Fallback data in case JSON import fails
-const fallbackData: PortfolioData = {
+// Portfolio data - this ensures it works reliably in both dev and production
+const portfolioData: PortfolioData = {
   personal: {
     name: "Kundan Kumar",
     title: "Full Stack Developer",
@@ -126,13 +126,5 @@ const fallbackData: PortfolioData = {
 };
 
 export function getPortfolioData(): PortfolioData {
-  try {
-    // Try to import JSON data first
-    const portfolioData = require('../public/data.json') as PortfolioData;
-    return portfolioData;
-  } catch (error) {
-    console.warn('JSON import failed, using fallback data:', error);
-    // Return fallback data if JSON import fails
-    return fallbackData;
-  }
+  return portfolioData;
 }
