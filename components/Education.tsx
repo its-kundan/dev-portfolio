@@ -73,14 +73,6 @@ const Education = () => {
                   <p className="text-dark-600 dark:text-gray-300 text-sm leading-relaxed">
                     {edu.description}
                   </p>
-
-                  {edu.gpa && (
-                    <div className="mt-3 pt-3 border-t border-gray-100 dark:border-dark-700">
-                      <span className="text-sm text-dark-500 dark:text-gray-400">
-                        GPA: <span className="font-semibold text-dark-900 dark:text-white">{edu.gpa}</span>
-                      </span>
-                    </div>
-                  )}
                 </motion.div>
               ))}
             </div>
