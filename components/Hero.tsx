@@ -1,33 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, Twitter, Mail, Download } from 'lucide-react';
 import { getPortfolioData } from '@/lib/data';
 import { Personal } from '@/lib/types';
 
 const Hero = () => {
-  const [data, setData] = useState<Personal | null>(null);
-
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const portfolioData = await getPortfolioData();
-        setData(portfolioData.personal);
-      } catch (error) {
-        console.error('Error loading hero data:', error);
-      }
-    };
-    loadData();
-  }, []);
-
-  if (!data) {
-    return (
-      <section id="home" className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
-      </section>
-    );
-  }
+  // Get data directly - guaranteed to be available
+  const data = getPortfolioData().personal;
 
   const scrollToAbout = () => {
     const element = document.querySelector('#about');
@@ -107,9 +87,9 @@ const Hero = () => {
               href={data.social.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-gray-100 dark:bg-dark-700 text-dark-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900/20 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200"
+              className="w-12 h-12 bg-dark-800 dark:bg-white rounded-full flex items-center justify-center text-white dark:text-dark-800 hover:bg-primary-600 dark:hover:bg-primary-600 hover:text-white transition-all duration-300"
             >
-              <Github size={24} />
+              <Github size={20} />
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.1, y: -2 }}
@@ -117,9 +97,9 @@ const Hero = () => {
               href={data.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-gray-100 dark:bg-dark-700 text-dark-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900/20 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200"
+              className="w-12 h-12 bg-dark-800 dark:bg-white rounded-full flex items-center justify-center text-white dark:text-dark-800 hover:bg-primary-600 dark:hover:bg-primary-600 hover:text-white transition-all duration-300"
             >
-              <Linkedin size={24} />
+              <Linkedin size={20} />
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.1, y: -2 }}
@@ -127,21 +107,21 @@ const Hero = () => {
               href={data.social.twitter}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-gray-100 dark:bg-dark-700 text-dark-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900/20 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200"
+              className="w-12 h-12 bg-dark-800 dark:bg-white rounded-full flex items-center justify-center text-white dark:text-dark-800 hover:bg-primary-600 dark:hover:bg-primary-600 hover:text-white transition-all duration-300"
             >
-              <Twitter size={24} />
+              <Twitter size={20} />
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
               href={`mailto:${data.email}`}
-              className="p-3 rounded-full bg-gray-100 dark:bg-dark-700 text-dark-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900/20 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200"
+              className="w-12 h-12 bg-dark-800 dark:bg-white rounded-full flex items-center justify-center text-white dark:text-dark-800 hover:bg-primary-600 dark:hover:bg-primary-600 hover:text-white transition-all duration-300"
             >
-              <Mail size={24} />
+              <Mail size={20} />
             </motion.a>
           </motion.div>
 
-          {/* CTA Buttons */}
+          {/* Call to Action Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -161,8 +141,7 @@ const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+              download
               className="btn-secondary flex items-center space-x-2"
             >
               <Download size={20} />
