@@ -1,4 +1,8 @@
 {
+    "metadata": {
+      "websiteUrl": "https://kundankumar.dev",
+      "siteName": "Kundan Kumar Portfolio"
+    },
     "personal": {
       "name": "Kundan Kumar",
       "title": "Full Stack Developer",
@@ -7,6 +11,8 @@
       "phone": "+91 7667886894",
       "location": "India",
       "avatar": "/avatar.jpg",
+      "experience": "0+ Years",
+      "topSkills": ["React", "Next.js", "TypeScript", "Node.js", "Python", "AWS"],
       "bio": "Full-stack developer skilled in MERN, Next.js, PostgreSQL, AWS, and scalable cloud deployments. Experienced in building production-grade applications with a focus on performance, security, and user experience.",
       "social": {
         "github": "https://github.com/its-kundan",
@@ -15,11 +21,93 @@
         "dribbble": ""
       }
     },
+    "content": {
+      "sections": {
+        "hero": {
+          "title": "Learn More",
+          "downloadCV": "Download CV"
+        },
+        "about": {
+          "title": "About Me",
+          "subtitle": "Get to know me better and understand my journey in the world of technology",
+          "storyTitle": "My Story",
+          "storyContent": [
+            "I'm passionate about creating user-friendly applications that solve real-world problems. My approach combines technical expertise with creative problem-solving, ensuring that every project I work on delivers exceptional value to users and stakeholders.",
+            "When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community. I believe in continuous learning and staying up-to-date with the latest industry trends and best practices."
+          ],
+          "skillsPreviewTitle": "What I Do Best"
+        },
+        "skills": {
+          "title": "My Skills",
+          "subtitle": "Technologies and tools I use to bring ideas to life",
+          "additionalExpertiseTitle": "Additional Expertise"
+        },
+        "experience": {
+          "title": "Work Experience",
+          "subtitle": "My professional journey and the companies I've had the pleasure to work with",
+          "ctaTitle": "Ready to Work Together?",
+          "ctaDescription": "I'm always open to new opportunities and exciting projects. Let's discuss how we can create something amazing together.",
+          "ctaButton": "Get In Touch"
+        },
+        "projects": {
+          "title": "Featured Projects",
+          "subtitle": "A showcase of my recent work and the technologies I've used to bring ideas to life",
+          "ctaTitle": "Have a Project in Mind?",
+          "ctaDescription": "I'm always excited to work on new and challenging projects. Let's discuss your ideas and bring them to life together.",
+          "ctaButton": "Start a Project"
+        },
+        "education": {
+          "title": "Education & Certifications",
+          "subtitle": "My academic background and professional certifications that support my expertise",
+          "educationTitle": "Education",
+          "certificationsTitle": "Certifications",
+          "continuousLearningTitle": "Continuous Learning",
+          "onlineCoursesTitle": "Online Courses & Platforms",
+          "focusAreasTitle": "Current Focus Areas",
+          "onlineCourses": [
+            "Coursera - Machine Learning Specialization",
+            "Udemy - Advanced React & TypeScript",
+            "AWS Training - Cloud Practitioner"
+          ],
+          "focusAreas": [
+            "Advanced TypeScript & React Patterns",
+            "Cloud Architecture & DevOps",
+            "System Design & Scalability"
+          ]
+        },
+        "contact": {
+          "title": "Get In Touch",
+          "subtitle": "Ready to start a project or just want to chat? I'd love to hear from you!",
+          "connectTitle": "Let's Connect",
+          "connectDescription": "I'm always interested in new opportunities and exciting projects. Whether you have a question or just want to say hi, I'll try my best to get back to you!",
+          "availabilityTitle": "Availability",
+          "availabilityDescription": "I'm currently available for freelance work and full-time opportunities. I typically respond within 24 hours during business days.",
+          "sendMessageTitle": "Send Message",
+          "ctaTitle": "Let's Build Something Amazing Together",
+          "ctaDescription": "I'm excited to hear about your project and see how we can work together to bring your ideas to life.",
+          "emailMeButton": "Email Me",
+          "linkedinButton": "Connect on LinkedIn"
+        }
+      }
+    },
     "skills": {
       "frontend": ["React", "Next.js", "TypeScript", "Tailwind CSS", "ShadCN", "Bootstrap"],
       "backend": ["Node.js", "Python", "Express.js", "FastAPI", "PostgreSQL", "MongoDB", "MySQL"],
-      "devops": ["Docker", "AWS", "GCP", "Vercel", "CI/CD", "Kubernetes"],
-      "tools": ["VS Code", "Git", "Postman", "Jest", "Playwright"]
+      "tools": ["VS Code", "Git", "Postman", "Jest", "Playwright"],
+      "devops": ["Docker", "AWS", "GCP", "CI/CD", "Kubernetes"],
+      "testing": ["Jest", "Playwright", "Cypress", "Selenium", "JUnit", "TestNG"] ,
+      "database": ["PostgreSQL", "MongoDB", "MySQL"],
+      "other": ["Git", "Postman", "Jest", "Playwright"],
+      "additionalExpertise": [
+        "Agile Development",
+        "Code Review",
+        "Performance Optimization",
+        "Security Best Practices",
+        "API Design",
+        "Database Design",
+        "Testing & QA",
+        "CI/CD Pipelines"
+      ]
     },
     "experience": [
       {

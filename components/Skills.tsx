@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Code, Database, Cloud, Settings } from 'lucide-react';
+import { Code, Database, Settings, Cloud, TestTube, Server, Wrench } from 'lucide-react';
 import { getPortfolioData } from '@/lib/data';
 import { Skills as SkillsType } from '@/lib/types';
 
@@ -9,7 +9,9 @@ const Skills = async () => {
   // Get data asynchronously from JSON file
   const portfolioData = await getPortfolioData();
   const data = portfolioData.skills;
+  const content = portfolioData.content.sections.skills;
 
+  // Dynamic skill categories configuration
   const skillCategories = [
     {
       title: 'Frontend',
@@ -33,13 +35,39 @@ const Skills = async () => {
       bgColor: 'bg-purple-50 dark:bg-purple-900/20'
     },
     {
+      title: 'Testing',
+      icon: TestTube,
+      skills: data.testing,
+      color: 'from-yellow-500 to-orange-500',
+      bgColor: 'bg-yellow-50 dark:bg-yellow-900/20'
+    },
+    {
+      title: 'Database',
+      icon: Server,
+      skills: data.database,
+      color: 'from-indigo-500 to-purple-500',
+      bgColor: 'bg-indigo-50 dark:bg-indigo-900/20'
+    },
+    {
       title: 'Tools',
       icon: Settings,
       skills: data.tools,
       color: 'from-orange-500 to-red-500',
       bgColor: 'bg-orange-50 dark:bg-orange-900/20'
+    },
+    {
+      title: 'Other',
+      icon: Wrench,
+      skills: data.other,
+      color: 'from-gray-500 to-slate-500',
+      bgColor: 'bg-gray-50 dark:bg-gray-900/20'
     }
   ];
+
+  // Filter out categories that have no skills
+  const activeCategories = skillCategories.filter(category => 
+    category.skills && category.skills.length > 0
+  );
 
   return (
     <section id="skills" className="section-padding gradient-bg">
@@ -52,15 +80,15 @@ const Skills = async () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            My <span className="gradient-text">Skills</span>
+            {content.title} <span className="gradient-text">Skills</span>
           </h2>
           <p className="text-lg text-dark-500 dark:text-gray-400 max-w-2xl mx-auto">
-            Technologies and tools I use to bring ideas to life
+            {content.subtitle}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skillCategories.map((category, categoryIndex) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {activeCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
               initial={{ opacity: 0, y: 50 }}
@@ -99,7 +127,7 @@ const Skills = async () => {
           ))}
         </div>
 
-        {/* Additional Skills Section */}
+        {/* Additional Skills Section - Now Dynamic */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -109,19 +137,10 @@ const Skills = async () => {
         >
           <div className="card p-8">
             <h3 className="text-2xl font-bold text-dark-900 dark:text-white mb-6 text-center">
-              Additional Expertise
+              {content.additionalExpertiseTitle}
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                'Agile Development',
-                'Code Review',
-                'Performance Optimization',
-                'Security Best Practices',
-                'API Design',
-                'Database Design',
-                'Testing & QA',
-                'CI/CD Pipelines'
-              ].map((skill, index) => (
+              {data.additionalExpertise.map((skill, index) => (
                 <motion.div
                   key={skill}
                   initial={{ opacity: 0, scale: 0.8 }}

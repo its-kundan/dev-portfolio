@@ -7,7 +7,7 @@ import { getPortfolioData } from '@/lib/data';
 import { Personal } from '@/lib/types';
 
 // Client component for the contact form
-const ContactForm = ({ data }: { data: Personal }) => {
+const ContactForm = ({ data, content }: { data: Personal; content: any }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -73,10 +73,10 @@ const ContactForm = ({ data }: { data: Personal }) => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Get In <span className="gradient-text">Touch</span>
+            {content.title} <span className="gradient-text">Touch</span>
           </h2>
           <p className="text-lg text-dark-500 dark:text-gray-400 max-w-2xl mx-auto">
-            Ready to start a project or just want to chat? I'd love to hear from you!
+            {content.subtitle}
           </p>
         </motion.div>
 
@@ -91,11 +91,10 @@ const ContactForm = ({ data }: { data: Personal }) => {
           >
             <div>
               <h3 className="text-2xl font-bold text-dark-900 dark:text-white mb-6">
-                Let's Connect
+                {content.connectTitle}
               </h3>
               <p className="text-dark-600 dark:text-gray-300 mb-8 leading-relaxed">
-                I'm always interested in new opportunities and exciting projects. 
-                Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                {content.connectDescription}
               </p>
             </div>
 
@@ -133,12 +132,11 @@ const ContactForm = ({ data }: { data: Personal }) => {
               <div className="flex items-center mb-4">
                 <Clock className="text-primary-600 dark:text-primary-400 mr-3" size={20} />
                 <h4 className="text-lg font-semibold text-dark-900 dark:text-white">
-                  Availability
+                  {content.availabilityTitle}
                 </h4>
               </div>
               <p className="text-dark-600 dark:text-gray-300 text-sm">
-                I'm currently available for freelance work and full-time opportunities. 
-                I typically respond within 24 hours during business days.
+                {content.availabilityDescription}
               </p>
             </motion.div>
           </motion.div>
@@ -154,7 +152,7 @@ const ContactForm = ({ data }: { data: Personal }) => {
               <div className="flex items-center mb-6">
                 <MessageSquare className="text-primary-600 dark:text-primary-400 mr-3" size={24} />
                 <h3 className="text-2xl font-bold text-dark-900 dark:text-white">
-                  Send Message
+                  {content.sendMessageTitle}
                 </h3>
               </div>
 
@@ -259,10 +257,10 @@ const ContactForm = ({ data }: { data: Personal }) => {
           <div className="card p-8 max-w-2xl mx-auto">
             <MessageSquare className="w-12 h-12 text-primary-600 mx-auto mb-4" />
             <h3 className="text-2xl font-bold mb-4 text-dark-900 dark:text-white">
-              Let's Build Something Amazing Together
+              {content.ctaTitle}
             </h3>
             <p className="text-dark-600 dark:text-gray-300 mb-6">
-              I'm excited to hear about your project and see how we can work together to bring your ideas to life.
+              {content.ctaDescription}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -270,7 +268,7 @@ const ContactForm = ({ data }: { data: Personal }) => {
                 className="btn-primary inline-flex items-center space-x-2"
               >
                 <Mail size={20} />
-                <span>Email Me</span>
+                <span>{content.emailMeButton}</span>
               </a>
               <a
                 href={data.social.linkedin}
@@ -278,7 +276,7 @@ const ContactForm = ({ data }: { data: Personal }) => {
                 rel="noopener noreferrer"
                 className="btn-secondary inline-flex items-center space-x-2"
               >
-                <span>Connect on LinkedIn</span>
+                <span>{content.linkedinButton}</span>
               </a>
             </div>
           </div>
@@ -293,8 +291,9 @@ const Contact = async () => {
   // Get data asynchronously from JSON file
   const portfolioData = await getPortfolioData();
   const data = portfolioData.personal;
+  const content = portfolioData.content.sections.contact;
 
-  return <ContactForm data={data} />;
+  return <ContactForm data={data} content={content} />;
 };
 
 export default Contact;

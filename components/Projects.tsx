@@ -9,6 +9,7 @@ const Projects = async () => {
   // Get data asynchronously from JSON file
   const portfolioData = await getPortfolioData();
   const data = portfolioData.projects;
+  const content = portfolioData.content.sections.projects;
 
   return (
     <section id="projects" className="section-padding gradient-bg">
@@ -21,10 +22,10 @@ const Projects = async () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Featured <span className="gradient-text">Projects</span>
+            {content.title} <span className="gradient-text">Projects</span>
           </h2>
           <p className="text-lg text-dark-500 dark:text-gray-400 max-w-2xl mx-auto">
-            A showcase of my recent work and the technologies I've used to bring ideas to life
+            {content.subtitle}
           </p>
         </motion.div>
 
@@ -133,16 +134,16 @@ const Projects = async () => {
         >
           <div className="card p-8 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold text-dark-900 dark:text-white mb-4">
-              Have a Project in Mind?
+              {content.ctaTitle}
             </h3>
             <p className="text-dark-600 dark:text-gray-300 mb-6">
-              I'm always excited to work on new and challenging projects. Let's discuss your ideas and bring them to life together.
+              {content.ctaDescription}
             </p>
             <a
               href="#contact"
               className="btn-primary inline-flex items-center space-x-2"
             >
-              <span>Start a Project</span>
+              <span>{content.ctaButton}</span>
               <ExternalLink size={20} />
             </a>
           </div>
