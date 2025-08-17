@@ -1,21 +1,192 @@
 # Portfolio Website Setup Guide
 
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+# Clone the repository from the "fix" branch
+git clone -b fix https://github.com/its-kundan/dev-portfolio.git
+cd dev-portfolio
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+```
+
+### 2. Open in Browser
+Navigate to [http://localhost:3000](http://localhost:3000) to see your portfolio.
+
 ## 📁 Required File Structure
 
 ```
-portfolio-t/
+dev-portfolio/
 ├── public/
-│   ├── data.json                 # Your portfolio data
+│   ├── data.json                 # Your portfolio data (UPDATE THIS)
 │   ├── avatar.jpg               # Your profile picture
 │   ├── resume.pdf              # Your CV/Resume
 │   └── projects/               # Project images folder
-│       ├── lms.jpg
-│       ├── english-course.jpg
-│       └── dialer.jpg
+│       ├── ecommerce.jpg
+│       ├── taskmanager.jpg
+│       └── weather.jpg
 ├── components/                  # React components
 ├── app/                        # Next.js app directory
 ├── lib/                        # Utility functions
 └── setup.md                    # This file
+```
+
+## 📝 Data Customization Guide
+
+### Step 1: Update Personal Information
+
+Edit `public/data.json` and replace the personal section:
+
+```json
+{
+  "metadata": {
+    "websiteUrl": "https://your-portfolio.vercel.app/",
+    "siteName": "Your Name Portfolio"
+  },
+  "personal": {
+    "name": "Your Full Name",
+    "title": "Your Professional Title",
+    "tagline": "Your professional tagline",
+    "email": "your.email@example.com",
+    "phone": "+1 (555) 123-4567",
+    "location": "Your City, Country",
+    "avatar": "/avatar.jpg",
+    "experience": "X+ Years",
+    "topSkills": ["Your", "Top", "Skills", "Here"],
+    "bio": "Your professional bio description",
+    "social": {
+      "github": "https://github.com/yourusername",
+      "linkedin": "https://www.linkedin.com/in/yourusername",
+      "twitter": "https://twitter.com/yourusername",
+      "dribbble": "https://dribbble.com/yourusername"
+    }
+  }
+}
+```
+
+### Step 2: Update Skills Section
+
+Replace the skills arrays with your actual skills:
+
+```json
+{
+  "skills": {
+    "frontend": ["React", "Next.js", "TypeScript", "Your Frontend Skills"],
+    "backend": ["Node.js", "Python", "Your Backend Skills"],
+    "tools": ["VS Code", "Git", "Your Tools"],
+    "devops": ["Docker", "AWS", "Your DevOps Skills"],
+    "testing": ["Jest", "Your Testing Tools"],
+    "database": ["PostgreSQL", "MongoDB", "Your Databases"],
+    "other": ["Your Other Skills"],
+    "additionalExpertise": [
+      "Your Expertise Area 1",
+      "Your Expertise Area 2",
+      "Your Expertise Area 3"
+    ]
+  }
+}
+```
+
+### Step 3: Update Work Experience
+
+Replace the experience array with your actual work history:
+
+```json
+{
+  "experience": [
+    {
+      "company": "Your Company Name",
+      "position": "Your Job Title",
+      "duration": "2023 - Present",
+      "description": "Your role description and responsibilities",
+      "technologies": ["React", "Node.js", "Your Technologies"],
+      "achievements": [
+        "Your key achievement 1",
+        "Your key achievement 2",
+        "Your key achievement 3"
+      ]
+    }
+  ]
+}
+```
+
+### Step 4: Update Projects
+
+Replace the projects array with your actual projects:
+
+```json
+{
+  "projects": [
+    {
+      "title": "Your Project Name",
+      "description": "Your project description",
+      "image": "/projects/your-project-image.jpg",
+      "technologies": ["React", "Node.js", "Your Technologies"],
+      "github": "https://github.com/yourusername/project",
+      "live": "https://your-project-demo.com",
+      "features": [
+        "Your project feature 1",
+        "Your project feature 2",
+        "Your project feature 3"
+      ]
+    }
+  ]
+}
+```
+
+### Step 5: Update Education
+
+Replace with your actual education:
+
+```json
+{
+  "education": [
+    {
+      "degree": "Your Degree Name",
+      "school": "Your University/Institution",
+      "duration": "2020 - 2024",
+      "description": "Your education description and focus areas"
+    }
+  ]
+}
+```
+
+### Step 6: Update Certifications
+
+Add your actual certifications:
+
+```json
+{
+  "certifications": [
+    {
+      "name": "Your Certification Name",
+      "issuer": "Certification Issuer",
+      "date": "2024",
+      "credential": "Your Credential ID"
+    }
+  ]
+}
+```
+
+### Step 7: Update Interests
+
+Replace with your actual interests:
+
+```json
+{
+  "interests": [
+    "Your Interest 1",
+    "Your Interest 2",
+    "Your Interest 3",
+    "Your Interest 4"
+  ]
+}
 ```
 
 ## 🖼️ Required Images
@@ -25,34 +196,29 @@ portfolio-t/
 - **Size**: 400x400px (square, 1:1 ratio)
 - **Format**: JPG or PNG
 - **Usage**: Hero section and About section profile display
-- **Description**: Professional headshot or profile picture
 
 ### 2. **Project Images**
 Create a `public/projects/` folder and add these images:
 
-#### Project 1: Learning Management System (LMS)
-- **File**: `public/projects/lms.jpg`
+#### Project 1: E-Commerce Platform
+- **File**: `public/projects/ecommerce.jpg`
 - **Size**: 800x600px (4:3 ratio recommended)
 - **Format**: JPG or PNG
-- **Description**: Screenshot or mockup of your LMS project
 
-#### Project 2: English Course E-Commerce
-- **File**: `public/projects/english-course.jpg`
+#### Project 2: Task Management App
+- **File**: `public/projects/taskmanager.jpg`
 - **Size**: 800x600px (4:3 ratio recommended)
 - **Format**: JPG or PNG
-- **Description**: Screenshot or mockup of your e-commerce website
 
-#### Project 3: Auto Number Dialer App
-- **File**: `public/projects/dialer.jpg`
+#### Project 3: Weather Dashboard
+- **File**: `public/projects/weather.jpg`
 - **Size**: 800x600px (4:3 ratio recommended)
 - **Format**: JPG or PNG
-- **Description**: Screenshot or mockup of your Android app
 
 ### 3. **Resume/CV**
 - **File**: `public/resume.pdf`
 - **Format**: PDF
 - **Usage**: Download link in Hero section
-- **Description**: Your professional resume or CV
 
 ## 🎨 Image Specifications
 
@@ -67,58 +233,6 @@ Create a `public/projects/` folder and add these images:
 - **High quality**: Clear screenshots or mockups
 - **Professional**: Clean, well-lit screenshots
 - **File size**: Under 1MB each for fast loading
-- **Format**: JPG for photos, PNG for screenshots with text
-
-## 📝 Content Setup
-
-### 1. **Update Personal Information**
-Edit `public/data.json` and update:
-- Name, title, tagline
-- Email, phone, location
-- Bio description
-- Social media links (GitHub, LinkedIn, etc.)
-
-### 2. **Update Skills**
-Modify the skills arrays in `public/data.json`:
-- Frontend technologies
-- Backend technologies
-- DevOps tools
-- Development tools
-
-### 3. **Update Experience**
-Replace the experience entries with your actual work history:
-- Company names
-- Job titles
-- Duration
-- Descriptions
-- Technologies used
-- Key achievements
-
-### 4. **Update Projects**
-Replace project entries with your actual projects:
-- Project titles
-- Descriptions
-- Technologies used
-- GitHub links
-- Live demo links
-- Key features
-
-### 5. **Update Education**
-Replace with your actual education:
-- Degree name
-- University/Institution
-- Duration
-- Description
-
-### 6. **Update Certifications**
-Add your actual certifications:
-- Certification names
-- Issuing organizations
-- Dates
-- Credential IDs (if applicable)
-
-### 7. **Update Interests**
-Modify the interests array with your actual interests and hobbies.
 
 ## 🚀 Deployment Instructions
 
@@ -142,9 +256,6 @@ npm run build
    - Vercel will automatically detect Next.js
 3. **Deploy**: Vercel will build and deploy automatically
 4. **Custom Domain** (Optional): Add your custom domain in Vercel settings
-
-### Environment Variables:
-No environment variables are required for this portfolio setup.
 
 ## 🔧 Customization Options
 
