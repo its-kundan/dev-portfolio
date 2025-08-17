@@ -5,9 +5,10 @@ import { ArrowDown, Github, Linkedin, Twitter, Mail, Download } from 'lucide-rea
 import { getPortfolioData } from '@/lib/data';
 import { Personal } from '@/lib/types';
 
-const Hero = () => {
-  // Get data directly - guaranteed to be available
-  const data = getPortfolioData().personal;
+const Hero = async () => {
+  // Get data asynchronously from JSON file
+  const portfolioData = await getPortfolioData();
+  const data = portfolioData.personal;
 
   const scrollToAbout = () => {
     const element = document.querySelector('#about');

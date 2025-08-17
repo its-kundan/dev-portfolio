@@ -6,10 +6,8 @@ import { Mail, Phone, MapPin, Send, MessageSquare, Clock } from 'lucide-react';
 import { getPortfolioData } from '@/lib/data';
 import { Personal } from '@/lib/types';
 
-const Contact = () => {
-  // Get data directly - no need for async loading
-  const data = getPortfolioData().personal;
-  
+// Client component for the contact form
+const ContactForm = ({ data }: { data: Personal }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -288,6 +286,15 @@ const Contact = () => {
       </div>
     </section>
   );
+};
+
+// Main async component
+const Contact = async () => {
+  // Get data asynchronously from JSON file
+  const portfolioData = await getPortfolioData();
+  const data = portfolioData.personal;
+
+  return <ContactForm data={data} />;
 };
 
 export default Contact;

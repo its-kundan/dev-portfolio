@@ -5,9 +5,10 @@ import { MapPin, Mail, Phone, Calendar, Award } from 'lucide-react';
 import { getPortfolioData } from '@/lib/data';
 import { Personal } from '@/lib/types';
 
-const About = () => {
-  // Get data directly - no need for async loading
-  const data = getPortfolioData().personal;
+const About = async () => {
+  // Get data asynchronously from JSON file
+  const portfolioData = await getPortfolioData();
+  const data = portfolioData.personal;
 
   const infoItems = [
     { icon: MapPin, label: 'Location', value: data.location },

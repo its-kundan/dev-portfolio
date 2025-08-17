@@ -5,9 +5,9 @@ import { GraduationCap, Award, Calendar, BookOpen } from 'lucide-react';
 import { getPortfolioData } from '@/lib/data';
 import { Education as EducationType, Certification } from '@/lib/types';
 
-const Education = () => {
-  // Get data directly - no need for async loading
-  const portfolioData = getPortfolioData();
+const Education = async () => {
+  // Get data asynchronously from JSON file
+  const portfolioData = await getPortfolioData();
   const education = portfolioData.education;
   const certifications = portfolioData.certifications;
 

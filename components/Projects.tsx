@@ -5,9 +5,10 @@ import { Github, ExternalLink, Code, Eye } from 'lucide-react';
 import { getPortfolioData } from '@/lib/data';
 import { Project } from '@/lib/types';
 
-const Projects = () => {
-  // Get data directly - no need for async loading
-  const data = getPortfolioData().projects;
+const Projects = async () => {
+  // Get data asynchronously from JSON file
+  const portfolioData = await getPortfolioData();
+  const data = portfolioData.projects;
 
   return (
     <section id="projects" className="section-padding gradient-bg">

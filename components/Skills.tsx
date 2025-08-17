@@ -5,9 +5,10 @@ import { Code, Database, Cloud, Settings } from 'lucide-react';
 import { getPortfolioData } from '@/lib/data';
 import { Skills as SkillsType } from '@/lib/types';
 
-const Skills = () => {
-  // Get data directly - no need for async loading
-  const data = getPortfolioData().skills;
+const Skills = async () => {
+  // Get data asynchronously from JSON file
+  const portfolioData = await getPortfolioData();
+  const data = portfolioData.skills;
 
   const skillCategories = [
     {

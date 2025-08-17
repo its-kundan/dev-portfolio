@@ -5,9 +5,10 @@ import { Calendar, MapPin, Award, ExternalLink } from 'lucide-react';
 import { getPortfolioData } from '@/lib/data';
 import { Experience as ExperienceType } from '@/lib/types';
 
-const Experience = () => {
-  // Get data directly - no need for async loading
-  const data = getPortfolioData().experience;
+const Experience = async () => {
+  // Get data asynchronously from JSON file
+  const portfolioData = await getPortfolioData();
+  const data = portfolioData.experience;
 
   return (
     <section id="experience" className="section-padding">
