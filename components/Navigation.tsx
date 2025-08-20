@@ -3,11 +3,12 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon } from 'lucide-react';
+import { useTheme } from './ThemeProvider';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggleTheme, mounted } = useTheme();
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -23,33 +24,9 @@ const Navigation = () => {
       setScrolled(window.scrollY > 50);
     };
 
-    const handleTheme = () => {
-      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        setIsDark(true);
-        document.documentElement.classList.add('dark');
-      } else {
-        setIsDark(false);
-        document.documentElement.classList.remove('dark');
-      }
-    };
-
     window.addEventListener('scroll', handleScroll);
-    handleTheme();
-
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const toggleTheme = () => {
-    if (isDark) {
-      document.documentElement.classList.remove('dark');
-      localStorage.theme = 'light';
-      setIsDark(false);
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.theme = 'dark';
-      setIsDark(true);
-    }
-  };
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -58,6 +35,23 @@ const Navigation = () => {
     }
     setIsOpen(false);
   };
+
+  // Don't render until mounted to prevent hydration issues
+  if (!mounted) {
+    return (
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-dark-900/80 backdrop-blur-md shadow-lg">
+        <div className="container-custom">
+          <div className="flex items-center justify-between h-16 px-4">
+            <div className="text-xl font-bold gradient-text">KK</div>
+            <div className="flex items-center space-x-4">
+              <div className="w-10 h-10 bg-gray-100 dark:bg-dark-700 rounded-lg animate-pulse"></div>
+              <div className="w-10 h-10 bg-gray-100 dark:bg-dark-700 rounded-lg animate-pulse md:hidden"></div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    );
+  }
 
   return (
     <motion.nav
@@ -76,7 +70,7 @@ const Navigation = () => {
             whileHover={{ scale: 1.05 }}
             className="text-xl font-bold gradient-text"
           >
-            AJ
+            KK
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -101,8 +95,9 @@ const Navigation = () => {
               whileTap={{ scale: 0.9 }}
               onClick={toggleTheme}
               className="p-2 rounded-lg bg-gray-100 dark:bg-dark-700 text-dark-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-600 transition-colors duration-200"
+              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             >
-              {isDark ? <Sun size={20} /> : <Moon size={20} />}
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </motion.button>
 
             {/* Mobile Menu Button */}
@@ -111,6 +106,7 @@ const Navigation = () => {
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-dark-700 text-dark-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-600 transition-colors duration-200"
+              aria-label="Toggle mobile menu"
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}
             </motion.button>

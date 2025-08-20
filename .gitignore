@@ -5,107 +5,84 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+.npm
+.yarn-integrity
 
 # Next.js
 .next/
 out/
 build/
 dist/
+.vercel
 
-# Production
-/build
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
 
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Coverage directory used by tools like istanbul
+# Testing
 coverage/
 *.lcov
-
-# nyc test coverage
 .nyc_output
 
-# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
+# Build tools
+.cache/
+.parcel-cache/
 .grunt
-
-# Bower dependency directory (https://bower.io/)
-bower_components
-
-# node-waf configuration
 .lock-wscript
-
-# Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 
-# Dependency directories
+# Package managers
 jspm_packages/
+bower_components/
 
-# TypeScript cache
-*.tsbuildinfo
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
+# Linting and formatting
 .eslintcache
-
-# Optional stylelint cache
 .stylelintcache
 
-# Microbundle cache
+# Microbundle
 .rpt2_cache/
 .rts2_cache_cjs/
 .rts2_cache_es/
 .rts2_cache_umd/
 
-# Optional REPL history
+# REPL
 .node_repl_history
 
-# Output of 'npm pack'
+# Package files
 *.tgz
 
-# Yarn Integrity file
-.yarn-integrity
+# PWA files
+**/public/sw.js
+**/public/workbox-*.js
+**/public/worker-*.js
+**/public/sw.js.map
+**/public/workbox-*.js.map
+**/public/worker-*.js.map
 
-# dotenv environment variable files
-.env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
+# Storybook
+.out/
+.storybook-out/
+storybook-static/
 
-# parcel-bundler cache (https://parceljs.org/)
-.cache
-.parcel-cache
-.bin
-# Next.js build output
-.next
-
-# Nuxt.js build / generate output
-.nuxt
-dist
-
-# Gatsby files
-.cache/
-# public  # Commented out to allow public folder to be tracked
-
-# Storybook build outputs
-.out
-.storybook-out
-storybook-static
-
-# Temporary folders
+# Temporary files
 tmp/
 temp/
+*.pid
+*.seed
+*.pid.lock
 
 # Logs
-logs
+logs/
 *.log
 
-# Editor directories and files
+# Editor files
 .vscode/
 .idea/
 *.swp
@@ -124,46 +101,20 @@ Thumbs.db
 # Windows
 *.lnk
 
-# Linux
-*~
-
 # macOS
 .AppleDouble
 .LSOverride
-
-# Icon must end with two \r
-Icon
-
-# Thumbnails
-._*
-
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.com.apple.timemachine.donotpresent
-
-# Directories potentially created on remote AFP share
 .AppleDB
 .AppleDesktop
 Network Trash Folder
 Temporary Items
 .apdisk
+.DocumentRevisions-V100
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+Icon
 
-# Vercel
-.vercel
-
-# TypeScript
-*.tsbuildinfo
-next-env.d.ts
-
-# PWA files
-**/public/sw.js
-**/public/workbox-*.js
-**/public/worker-*.js
-**/public/sw.js.map
-**/public/workbox-*.js.map
-**/public/worker-*.js.map
+# Linux
+*~

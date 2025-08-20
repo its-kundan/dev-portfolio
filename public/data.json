@@ -1,124 +1,213 @@
 {
+    "metadata": {
+      "websiteUrl": "https://john-doe-portfolio.vercel.app/",
+      "siteName": "John Doe Portfolio"
+    },
     "personal": {
-      "name": "Kundan Kumar",
+      "name": "John Doe",
       "title": "Full Stack Developer",
       "tagline": "Building scalable, impactful, and user-focused digital solutions",
-      "email": "kundan51kk@gmail.com",
-      "phone": "+91 7667886894",
-      "location": "India",
+      "email": "john.doe@example.com",
+      "phone": "+1 555-123-4567",
+      "location": "San Francisco, CA",
       "avatar": "/avatar.jpg",
+      "experience": "3+ Years",
+      "topSkills": ["React", "Next.js", "TypeScript", "Node.js", "Python", "AWS"],
       "bio": "Full-stack developer skilled in MERN, Next.js, PostgreSQL, AWS, and scalable cloud deployments. Experienced in building production-grade applications with a focus on performance, security, and user experience.",
       "social": {
-        "github": "https://github.com/its-kundan",
-        "linkedin": "https://www.linkedin.com/in/its-kundan",
-        "twitter": "",
-        "dribbble": ""
+        "github": "https://github.com/johndoe-dev",
+        "linkedin": "https://www.linkedin.com/in/johndoe-dev",
+        "twitter": "https://twitter.com/johndoe_dev",
+        "dribbble": "https://dribbble.com/johndoe"
+      }
+    },
+    "content": {
+      "sections": {
+        "hero": {
+          "title": "Learn More",
+          "downloadCV": "Download CV"
+        },
+        "about": {
+          "title": "About Me",
+          "subtitle": "Get to know me better and understand my journey in the world of technology",
+          "storyTitle": "My Story",
+          "storyContent": [
+            "I'm passionate about creating user-friendly applications that solve real-world problems. My approach combines technical expertise with creative problem-solving, ensuring that every project I work on delivers exceptional value to users and stakeholders.",
+            "When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community. I believe in continuous learning and staying up-to-date with the latest industry trends and best practices."
+          ],
+          "skillsPreviewTitle": "What I Do Best"
+        },
+        "skills": {
+          "title": "My Skills",
+          "subtitle": "Technologies and tools I use to bring ideas to life",
+          "additionalExpertiseTitle": "Additional Expertise"
+        },
+        "experience": {
+          "title": "Work Experience",
+          "subtitle": "My professional journey and the companies I've had the pleasure to work with",
+          "ctaTitle": "Ready to Work Together?",
+          "ctaDescription": "I'm always open to new opportunities and exciting projects. Let's discuss how we can create something amazing together.",
+          "ctaButton": "Get In Touch"
+        },
+        "projects": {
+          "title": "Featured Projects",
+          "subtitle": "A showcase of my recent work and the technologies I've used to bring ideas to life",
+          "ctaTitle": "Have a Project in Mind?",
+          "ctaDescription": "I'm always excited to work on new and challenging projects. Let's discuss your ideas and bring them to life together.",
+          "ctaButton": "Start a Project"
+        },
+        "education": {
+          "title": "Education & Certifications",
+          "subtitle": "My academic background and professional certifications that support my expertise",
+          "educationTitle": "Education",
+          "certificationsTitle": "Certifications",
+          "continuousLearningTitle": "Continuous Learning",
+          "onlineCoursesTitle": "Online Courses & Platforms",
+          "focusAreasTitle": "Current Focus Areas",
+          "onlineCourses": [
+            "Coursera - Machine Learning Specialization",
+            "Udemy - Advanced React & TypeScript",
+            "AWS Training - Cloud Practitioner"
+          ],
+          "focusAreas": [
+            "Advanced TypeScript & React Patterns",
+            "Cloud Architecture & DevOps",
+            "System Design & Scalability"
+          ]
+        },
+        "contact": {
+          "title": "Get In Touch",
+          "subtitle": "Ready to start a project or just want to chat? I'd love to hear from you!",
+          "connectTitle": "Let's Connect",
+          "connectDescription": "I'm always interested in new opportunities and exciting projects. Whether you have a question or just want to say hi, I'll try my best to get back to you!",
+          "availabilityTitle": "Availability",
+          "availabilityDescription": "I'm currently available for freelance work and full-time opportunities. I typically respond within 24 hours during business days.",
+          "sendMessageTitle": "Send Message",
+          "ctaTitle": "Let's Build Something Amazing Together",
+          "ctaDescription": "I'm excited to hear about your project and see how we can work together to bring your ideas to life.",
+          "emailMeButton": "Email Me",
+          "linkedinButton": "Connect on LinkedIn"
+        }
       }
     },
     "skills": {
       "frontend": ["React", "Next.js", "TypeScript", "Tailwind CSS", "ShadCN", "Bootstrap"],
       "backend": ["Node.js", "Python", "Express.js", "FastAPI", "PostgreSQL", "MongoDB", "MySQL"],
-      "devops": ["Docker", "AWS", "GCP", "Vercel", "CI/CD", "Kubernetes"],
-      "tools": ["VS Code", "Git", "Postman", "Jest", "Playwright"]
+      "tools": ["VS Code", "Git", "Postman", "Jest", "Playwright"],
+      "devops": ["Docker", "AWS", "GCP", "CI/CD", "Kubernetes"],
+      "testing": ["Jest", "Playwright", "Cypress", "Selenium", "JUnit", "TestNG"] ,
+      "database": ["PostgreSQL", "MongoDB", "MySQL"],
+      "other": ["Git", "Postman", "Jest", "Playwright"],
+      "additionalExpertise": [
+        "Agile Development",
+        "Code Review",
+        "Performance Optimization",
+        "Security Best Practices",
+        "API Design",
+        "Database Design",
+        "Testing & QA",
+        "CI/CD Pipelines"
+      ]
     },
     "experience": [
       {
-        "company": "Growthinker",
-        "position": "Full Stack Developer & Tech Lead",
-        "duration": "2024 - Present",
-        "description": "Managed all technical operations, from design to deployment, including website development, backend systems, authentication, content management, cloud hosting, and analytics integration.",
-        "technologies": ["Next.js", "Node.js", "MongoDB", "AWS", "Docker"],
+        "company": "TechCorp Solutions",
+        "position": "Senior Full Stack Developer",
+        "duration": "2023 - Present",
+        "description": "Led development of enterprise-level applications, managed team of 5 developers, and implemented best practices for code quality and deployment automation.",
+        "technologies": ["Next.js", "Node.js", "PostgreSQL", "AWS", "Docker"],
         "achievements": [
-          "Built and deployed the company's complete digital presence",
-          "Integrated secure authentication and role-based access control",
-          "Optimized system performance and reduced load times by 35%"
+          "Reduced application load time by 40% through optimization",
+          "Implemented CI/CD pipeline reducing deployment time by 60%",
+          "Mentored junior developers and conducted code reviews"
         ]
       },
       {
-        "company": "OnlineJaoo.com",
-        "position": "Software Development Intern",
-        "duration": "2023",
-        "description": "Worked on multiple projects including developer portfolio, real-time chat app, job portal, and coin toss game.",
+        "company": "StartupHub Inc",
+        "position": "Full Stack Developer",
+        "duration": "2021 - 2023",
+        "description": "Developed and maintained multiple web applications, collaborated with cross-functional teams, and contributed to product roadmap planning.",
         "technologies": ["React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
         "achievements": [
-          "Developed full-stack projects from scratch",
-          "Improved UI responsiveness and accessibility",
-          "Collaborated with team members to enhance product features"
+          "Built 3 major features that increased user engagement by 25%",
+          "Improved application performance and reduced bugs by 30%",
+          "Participated in agile development processes and sprint planning"
         ]
       }
     ],
     "projects": [
       {
-        "title": "Learning Management System (LMS)",
-        "description": "An online learning platform with secure access, course management, payments, and responsive UI.",
-        "image": "/projects/lms.jpg",
-        "technologies": ["MERN", "Tailwind CSS", "JWT", "Razorpay"],
-        "github": "https://github.com/its-kundan",
-        "live": "https://lms-demo.vercel.app",
+        "title": "E-Commerce Platform",
+        "description": "A modern e-commerce solution with inventory management, payment processing, and admin dashboard.",
+        "image": "/projects/ecommerce.jpg",
+        "technologies": ["MERN", "Tailwind CSS", "JWT", "Stripe"],
+        "github": "https://github.com/johndoe-dev",
+        "live": "https://ecommerce-demo.vercel.app",
         "features": [
-          "JWT + bcrypt authentication",
-          "Role-based access control",
-          "Admin course/lecture CRUD",
-          "Integrated Razorpay payment gateway"
+          "Secure authentication system",
+          "Real-time inventory tracking",
+          "Integrated payment processing",
+          "Responsive admin dashboard"
         ]
       },
       {
-        "title": "English-Speaking Course E-Commerce Website",
-        "description": "A modern, responsive e-commerce platform for English courses, built with Next.js 14, PostgreSQL, and Turborepo.",
-        "image": "/projects/english-course.jpg",
+        "title": "Task Management App",
+        "description": "A collaborative task management application with real-time updates, team collaboration, and progress tracking.",
+        "image": "/projects/taskmanager.jpg",
         "technologies": ["Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS", "Docker"],
-        "github": "https://github.com/its-kundan",
-        "live": "",
+        "github": "https://github.com/johndoe-dev",
+        "live": "https://taskmanager-demo.vercel.app",
         "features": [
-          "Full checkout flow",
-          "Search and filtering",
-          "Authentication with NextAuth",
-          "Admin dashboard"
+          "Real-time collaboration",
+          "Task assignment and tracking",
+          "Progress analytics",
+          "Team management"
         ]
       },
       {
-        "title": "Auto Number Dialer App",
-        "description": "An Android app for automated number dialing using Appium and Node.js.",
-        "image": "/projects/dialer.jpg",
-        "technologies": ["Node.js", "Appium", "JavaScript", "Android"],
-        "github": "",
-        "live": "",
+        "title": "Weather Dashboard",
+        "description": "A weather application with location-based forecasts, historical data, and interactive maps.",
+        "image": "/projects/weather.jpg",
+        "technologies": ["React", "Node.js", "OpenWeather API", "Chart.js"],
+        "github": "https://github.com/johndoe-dev",
+        "live": "https://weather-demo.vercel.app",
         "features": [
-          "Automated dialing sequence",
-          "Customizable delay intervals",
-          "Supports bulk contact uploads"
+          "Location-based weather data",
+          "7-day forecast",
+          "Interactive weather maps",
+          "Historical data visualization"
         ]
       }
     ],
     "education": [
       {
-        "degree": "Bachelor of Technology in Computer Science",
-        "school": "Your University Name",
-        "duration": "2021 - 2025",
-        "description": "Focused on software development, web technologies, and scalable systems."
+        "degree": "Bachelor of Science in Computer Science",
+        "school": "University of Technology",
+        "duration": "2017 - 2021",
+        "description": "Focused on software engineering, web development, and distributed systems."
       }
     ],
     "certifications": [
       {
-        "name": "AWS Certified Developer",
+        "name": "AWS Certified Solutions Architect",
         "issuer": "Amazon Web Services",
-        "date": "2024",
-        "credential": ""
+        "date": "2023",
+        "credential": "AWS-CSA-12345"
       },
       {
         "name": "Google Cloud Professional Developer",
         "issuer": "Google Cloud",
-        "date": "2024",
-        "credential": ""
+        "date": "2022",
+        "credential": "GCP-PD-67890"
       }
     ],
     "interests": [
       "Open Source Contribution",
       "Cloud Computing",
-      "System Optimization",
+      "System Architecture",
       "Tech Blogging",
       "Exploring New Technologies",
-      "Reading Books"
+      "Reading Tech Books"
     ]
   }
   

@@ -5,9 +5,11 @@ import { Calendar, MapPin, Award, ExternalLink } from 'lucide-react';
 import { getPortfolioData } from '@/lib/data';
 import { Experience as ExperienceType } from '@/lib/types';
 
-const Experience = () => {
-  // Get data directly - no need for async loading
-  const data = getPortfolioData().experience;
+const Experience = async () => {
+  // Get data asynchronously from JSON file
+  const portfolioData = await getPortfolioData();
+  const data = portfolioData.experience;
+  const content = portfolioData.content.sections.experience;
 
   return (
     <section id="experience" className="section-padding">
@@ -20,10 +22,10 @@ const Experience = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Work <span className="gradient-text">Experience</span>
+            {content.title} <span className="gradient-text">Experience</span>
           </h2>
           <p className="text-lg text-dark-500 dark:text-gray-400 max-w-2xl mx-auto">
-            My professional journey and the companies I've had the pleasure to work with
+            {content.subtitle}
           </p>
         </motion.div>
 
@@ -122,16 +124,16 @@ const Experience = () => {
         >
           <div className="card p-8 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold text-dark-900 dark:text-white mb-4">
-              Ready to Work Together?
+              {content.ctaTitle}
             </h3>
             <p className="text-dark-600 dark:text-gray-300 mb-6">
-              I'm always open to new opportunities and exciting projects. Let's discuss how we can create something amazing together.
+              {content.ctaDescription}
             </p>
             <a
               href="#contact"
               className="btn-primary inline-flex items-center space-x-2"
             >
-              <span>Get In Touch</span>
+              <span>{content.ctaButton}</span>
               <ExternalLink size={20} />
             </a>
           </div>

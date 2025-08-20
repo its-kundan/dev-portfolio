@@ -23,10 +23,10 @@ A stunning, responsive portfolio website built with Next.js, TypeScript, and Tai
 
 ### Installation
 
-1. **Clone the repository**
+1. **Clone the repository from the "fix" branch**
    ```bash
-   git clone <your-repo-url>
-   cd portfolio-website
+   git clone -b fix https://github.com/its-kundan/dev-portfolio.git
+   cd dev-portfolio
    ```
 
 2. **Install dependencies**
@@ -49,7 +49,7 @@ A stunning, responsive portfolio website built with Next.js, TypeScript, and Tai
 ## 📁 Project Structure
 
 ```
-portfolio-website/
+dev-portfolio/
 ├── app/                    # Next.js app directory
 │   ├── globals.css        # Global styles
 │   ├── layout.tsx         # Root layout
@@ -68,7 +68,7 @@ portfolio-website/
 │   ├── data.ts           # Data loading functions
 │   └── types.ts          # TypeScript type definitions
 ├── public/               # Static assets
-│   └── data.json         # Portfolio data
+│   └── data.json         # Portfolio data (UPDATE THIS)
 └── package.json          # Dependencies and scripts
 ```
 
@@ -80,14 +80,18 @@ Edit `public/data.json` to update your personal information:
 
 ```json
 {
+  "metadata": {
+    "websiteUrl": "https://your-portfolio.vercel.app/",
+    "siteName": "Your Name Portfolio"
+  },
   "personal": {
-    "name": "Your Name",
-    "title": "Your Title",
-    "tagline": "Your tagline",
+    "name": "Your Full Name",
+    "title": "Your Professional Title",
+    "tagline": "Your professional tagline",
     "email": "your.email@example.com",
     "phone": "+1 (555) 123-4567",
-    "location": "Your Location",
-    "bio": "Your bio description",
+    "location": "Your City, Country",
+    "bio": "Your professional bio description",
     "social": {
       "github": "https://github.com/yourusername",
       "linkedin": "https://linkedin.com/in/yourusername",
@@ -105,10 +109,10 @@ Modify the skills section in `public/data.json`:
 ```json
 {
   "skills": {
-    "frontend": ["React", "Next.js", "TypeScript"],
-    "backend": ["Node.js", "Python", "PostgreSQL"],
-    "devops": ["Docker", "AWS", "CI/CD"],
-    "tools": ["VS Code", "Figma", "Git"]
+    "frontend": ["React", "Next.js", "TypeScript", "Your Frontend Skills"],
+    "backend": ["Node.js", "Python", "Your Backend Skills"],
+    "devops": ["Docker", "AWS", "Your DevOps Skills"],
+    "tools": ["VS Code", "Git", "Your Tools"]
   }
 }
 ```
@@ -121,14 +125,14 @@ Update the experience array in `public/data.json`:
 {
   "experience": [
     {
-      "company": "Company Name",
-      "position": "Your Position",
-      "duration": "2022 - Present",
-      "description": "Your role description",
-      "technologies": ["React", "Node.js", "PostgreSQL"],
+      "company": "Your Company Name",
+      "position": "Your Job Title",
+      "duration": "2023 - Present",
+      "description": "Your role description and responsibilities",
+      "technologies": ["React", "Node.js", "Your Technologies"],
       "achievements": [
-        "Key achievement 1",
-        "Key achievement 2"
+        "Your key achievement 1",
+        "Your key achievement 2"
       ]
     }
   ]
@@ -143,22 +147,56 @@ Update the projects array in `public/data.json`:
 {
   "projects": [
     {
-      "title": "Project Name",
-      "description": "Project description",
-      "image": "/projects/project-image.jpg",
-      "technologies": ["React", "Node.js", "MongoDB"],
+      "title": "Your Project Name",
+      "description": "Your project description",
+      "image": "/projects/your-project-image.jpg",
+      "technologies": ["React", "Node.js", "Your Technologies"],
       "github": "https://github.com/yourusername/project",
-      "live": "https://project-demo.com",
+      "live": "https://your-project-demo.com",
       "features": [
-        "Feature 1",
-        "Feature 2"
+        "Your project feature 1",
+        "Your project feature 2"
       ]
     }
   ]
 }
 ```
 
-### 5. Customize Colors
+### 5. Update Education
+
+Replace with your actual education:
+
+```json
+{
+  "education": [
+    {
+      "degree": "Your Degree Name",
+      "school": "Your University/Institution",
+      "duration": "2020 - 2024",
+      "description": "Your education description and focus areas"
+    }
+  ]
+}
+```
+
+### 6. Add Certifications
+
+Add your actual certifications:
+
+```json
+{
+  "certifications": [
+    {
+      "name": "Your Certification Name",
+      "issuer": "Certification Issuer",
+      "date": "2024",
+      "credential": "Your Credential ID"
+    }
+  ]
+}
+```
+
+### 7. Customize Colors
 
 Update the color scheme in `tailwind.config.js`:
 
@@ -180,7 +218,7 @@ theme: {
 }
 ```
 
-### 6. Add Images
+### 8. Add Images
 
 Place your images in the `public/` directory:
 - Profile photo: `public/avatar.jpg`
@@ -245,6 +283,20 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## 📞 Support
 
 If you have any questions or need help customizing the portfolio, please open an issue on GitHub.
+
+## 📋 Setup Checklist
+
+Before deploying, ensure you have:
+
+- [ ] Updated `public/data.json` with your information
+- [ ] Added profile picture (`public/avatar.jpg`)
+- [ ] Added project images (`public/projects/` folder)
+- [ ] Added resume/CV (`public/resume.pdf`)
+- [ ] Updated all social media links
+- [ ] Updated project links (GitHub, live demos)
+- [ ] Verified contact information
+- [ ] Updated skills and experience
+- [ ] Updated education and certifications
 
 ---
 

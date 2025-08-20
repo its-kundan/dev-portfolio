@@ -5,15 +5,17 @@ import { MapPin, Mail, Phone, Calendar, Award } from 'lucide-react';
 import { getPortfolioData } from '@/lib/data';
 import { Personal } from '@/lib/types';
 
-const About = () => {
-  // Get data directly - no need for async loading
-  const data = getPortfolioData().personal;
+const About = async () => {
+  // Get data asynchronously from JSON file
+  const portfolioData = await getPortfolioData();
+  const data = portfolioData.personal;
+  const content = portfolioData.content.sections.about;
 
   const infoItems = [
     { icon: MapPin, label: 'Location', value: data.location },
     { icon: Mail, label: 'Email', value: data.email },
     { icon: Phone, label: 'Phone', value: data.phone },
-    { icon: Calendar, label: 'Experience', value: '5+ Years' },
+    { icon: Calendar, label: 'Experience', value: data.experience },
   ];
 
   return (
@@ -27,10 +29,10 @@ const About = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            About <span className="gradient-text">Me</span>
+            {content.title} <span className="gradient-text">Me</span>
           </h2>
           <p className="text-lg text-dark-500 dark:text-gray-400 max-w-2xl mx-auto">
-            Get to know me better and understand my journey in the world of technology
+            {content.subtitle}
           </p>
         </motion.div>
 
@@ -88,32 +90,27 @@ const About = () => {
           >
             <div className="card p-8">
               <h3 className="text-2xl font-bold text-dark-900 dark:text-white mb-6">
-                My Story
+                {content.storyTitle}
               </h3>
               <div className="space-y-4 text-dark-600 dark:text-gray-300 leading-relaxed">
                 <p>
                   {data.bio}
                 </p>
-                <p>
-                  I'm passionate about creating user-friendly applications that solve real-world problems. 
-                  My approach combines technical expertise with creative problem-solving, ensuring that 
-                  every project I work on delivers exceptional value to users and stakeholders.
-                </p>
-                <p>
-                  When I'm not coding, you can find me exploring new technologies, contributing to open-source 
-                  projects, or sharing knowledge with the developer community. I believe in continuous learning 
-                  and staying up-to-date with the latest industry trends and best practices.
-                </p>
+                {content.storyContent.map((paragraph, index) => (
+                  <p key={index}>
+                    {paragraph}
+                  </p>
+                ))}
               </div>
             </div>
 
             {/* Skills Preview */}
             <div className="card p-6">
               <h4 className="text-lg font-semibold text-dark-900 dark:text-white mb-4">
-                What I Do Best
+                {content.skillsPreviewTitle}
               </h4>
               <div className="flex flex-wrap gap-2">
-                {['React', 'Next.js', 'TypeScript', 'Node.js', 'Python', 'AWS'].map((skill, index) => (
+                {data.topSkills.map((skill, index) => (
                   <motion.span
                     key={skill}
                     initial={{ opacity: 0, scale: 0.8 }}

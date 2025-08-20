@@ -5,11 +5,12 @@ import { GraduationCap, Award, Calendar, BookOpen } from 'lucide-react';
 import { getPortfolioData } from '@/lib/data';
 import { Education as EducationType, Certification } from '@/lib/types';
 
-const Education = () => {
-  // Get data directly - no need for async loading
-  const portfolioData = getPortfolioData();
+const Education = async () => {
+  // Get data asynchronously from JSON file
+  const portfolioData = await getPortfolioData();
   const education = portfolioData.education;
   const certifications = portfolioData.certifications;
+  const content = portfolioData.content.sections.education;
 
   return (
     <section id="education" className="section-padding">
@@ -22,10 +23,10 @@ const Education = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Education & <span className="gradient-text">Certifications</span>
+            {content.title} <span className="gradient-text">Certifications</span>
           </h2>
           <p className="text-lg text-dark-500 dark:text-gray-400 max-w-2xl mx-auto">
-            My academic background and professional certifications that support my expertise
+            {content.subtitle}
           </p>
         </motion.div>
 
@@ -42,7 +43,7 @@ const Education = () => {
                 <GraduationCap className="text-white" size={24} />
               </div>
               <h3 className="text-2xl font-bold text-dark-900 dark:text-white">
-                Education
+                {content.educationTitle}
               </h3>
             </div>
 
@@ -90,7 +91,7 @@ const Education = () => {
                 <Award className="text-white" size={24} />
               </div>
               <h3 className="text-2xl font-bold text-dark-900 dark:text-white">
-                Certifications
+                {content.certificationsTitle}
               </h3>
             </div>
 
@@ -141,48 +142,36 @@ const Education = () => {
                 <BookOpen className="text-white" size={24} />
               </div>
               <h3 className="text-2xl font-bold text-dark-900 dark:text-white">
-                Continuous Learning
+                {content.continuousLearningTitle}
               </h3>
             </div>
             
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h4 className="text-lg font-semibold text-dark-900 dark:text-white mb-3">
-                  Online Courses & Platforms
+                  {content.onlineCoursesTitle}
                 </h4>
                 <ul className="space-y-2 text-dark-600 dark:text-gray-300">
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-primary-600 rounded-full mr-3"></span>
-                    Coursera - Machine Learning Specialization
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-primary-600 rounded-full mr-3"></span>
-                    Udemy - Advanced React & TypeScript
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-primary-600 rounded-full mr-3"></span>
-                    AWS Training - Cloud Practitioner
-                  </li>
+                  {content.onlineCourses.map((course, index) => (
+                    <li key={index} className="flex items-center">
+                      <span className="w-2 h-2 bg-primary-600 rounded-full mr-3"></span>
+                      {course}
+                    </li>
+                  ))}
                 </ul>
               </div>
               
               <div>
                 <h4 className="text-lg font-semibold text-dark-900 dark:text-white mb-3">
-                  Current Focus Areas
+                  {content.focusAreasTitle}
                 </h4>
                 <ul className="space-y-2 text-dark-600 dark:text-gray-300">
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-primary-600 rounded-full mr-3"></span>
-                    Advanced TypeScript & React Patterns
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-primary-600 rounded-full mr-3"></span>
-                    Cloud Architecture & DevOps
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-primary-600 rounded-full mr-3"></span>
-                    System Design & Scalability
-                  </li>
+                  {content.focusAreas.map((area, index) => (
+                    <li key={index} className="flex items-center">
+                      <span className="w-2 h-2 bg-primary-600 rounded-full mr-3"></span>
+                      {area}
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

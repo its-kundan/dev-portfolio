@@ -5,9 +5,11 @@ import { ArrowDown, Github, Linkedin, Twitter, Mail, Download } from 'lucide-rea
 import { getPortfolioData } from '@/lib/data';
 import { Personal } from '@/lib/types';
 
-const Hero = () => {
-  // Get data directly - guaranteed to be available
-  const data = getPortfolioData().personal;
+const Hero = async () => {
+  // Get data asynchronously from JSON file
+  const portfolioData = await getPortfolioData();
+  const data = portfolioData.personal;
+  const content = portfolioData.content.sections.hero;
 
   const scrollToAbout = () => {
     const element = document.querySelector('#about');
@@ -134,7 +136,7 @@ const Hero = () => {
               onClick={scrollToAbout}
               className="btn-primary flex items-center space-x-2"
             >
-              <span>Learn More</span>
+              <span>{content.title}</span>
               <ArrowDown size={20} />
             </motion.button>
             <motion.a
@@ -145,7 +147,7 @@ const Hero = () => {
               className="btn-secondary flex items-center space-x-2"
             >
               <Download size={20} />
-              <span>Download CV</span>
+              <span>{content.downloadCV}</span>
             </motion.a>
           </motion.div>
         </motion.div>
