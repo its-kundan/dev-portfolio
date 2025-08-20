@@ -5,8 +5,8 @@
 ### 1. Clone the Repository
 
 ```bash
-# Clone the repository from the "fix" branch
-git clone -b fix https://github.com/its-kundan/dev-portfolio.git
+# Clone the repository from the master branch (final version)
+git clone https://github.com/its-kundan/dev-portfolio.git
 cd dev-portfolio
 
 # Install dependencies
@@ -28,9 +28,9 @@ dev-portfolio/
 │   ├── avatar.jpg               # Your profile picture
 │   ├── resume.pdf              # Your CV/Resume
 │   └── projects/               # Project images folder
-│       ├── ecommerce.jpg
-│       ├── taskmanager.jpg
-│       └── weather.jpg
+│       ├── project1.jpg
+│       ├── project2.jpg
+│       └── project3.jpg
 ├── components/                  # React components
 ├── app/                        # Next.js app directory
 ├── lib/                        # Utility functions
@@ -198,22 +198,13 @@ Replace with your actual interests:
 - **Usage**: Hero section and About section profile display
 
 ### 2. **Project Images**
-Create a `public/projects/` folder and add these images:
+Create a `public/projects/` folder and add your project images:
 
-#### Project 1: E-Commerce Platform
-- **File**: `public/projects/ecommerce.jpg`
+#### Example Project Images:
+- **File**: `public/projects/project1.jpg`
 - **Size**: 800x600px (4:3 ratio recommended)
 - **Format**: JPG or PNG
-
-#### Project 2: Task Management App
-- **File**: `public/projects/taskmanager.jpg`
-- **Size**: 800x600px (4:3 ratio recommended)
-- **Format**: JPG or PNG
-
-#### Project 3: Weather Dashboard
-- **File**: `public/projects/weather.jpg`
-- **Size**: 800x600px (4:3 ratio recommended)
-- **Format**: JPG or PNG
+- **Content**: Screenshots or mockups of your projects
 
 ### 3. **Resume/CV**
 - **File**: `public/resume.pdf`
@@ -236,7 +227,7 @@ Create a `public/projects/` folder and add these images:
 
 ## 🚀 Deployment Instructions
 
-### Local Development:
+### Step 1: Local Development
 ```bash
 # Install dependencies
 npm install
@@ -244,18 +235,49 @@ npm install
 # Run development server
 npm run dev
 
-# Build for production
+# Build for production (test locally)
 npm run build
 ```
 
-### Vercel Deployment:
-1. **Push to GitHub**: Commit and push your code to a GitHub repository
-2. **Connect to Vercel**: 
-   - Go to [vercel.com](https://vercel.com)
-   - Import your GitHub repository
-   - Vercel will automatically detect Next.js
-3. **Deploy**: Vercel will build and deploy automatically
-4. **Custom Domain** (Optional): Add your custom domain in Vercel settings
+### Step 2: Push to GitHub
+```bash
+# Initialize git (if not already done)
+git init
+
+# Add all files
+git add .
+
+# Commit your changes
+git commit -m "Customize portfolio with my information"
+
+# Add your GitHub repository as remote
+git remote add origin https://github.com/yourusername/your-portfolio-repo.git
+
+# Push to GitHub
+git push -u origin master
+```
+
+### Step 3: Deploy to Vercel
+
+1. **Go to Vercel**: Visit [vercel.com](https://vercel.com)
+2. **Sign up/Login**: Use your GitHub account
+3. **Create New Project**: Click "New Project"
+4. **Import Repository**: Select your GitHub portfolio repository
+5. **Configure Project**:
+   - Framework Preset: Next.js (auto-detected)
+   - Root Directory: `./` (default)
+   - Build Command: `npm run build` (default)
+   - Output Directory: `.next` (default)
+6. **Deploy**: Click "Deploy"
+7. **Wait for Build**: Vercel will build and deploy automatically
+8. **Your Portfolio is Live**: Get your live URL (e.g., `https://your-portfolio.vercel.app`)
+
+### Step 4: Custom Domain (Optional)
+1. **In Vercel Dashboard**: Go to your project settings
+2. **Domains Section**: Click "Add Domain"
+3. **Enter Domain**: Add your custom domain
+4. **Configure DNS**: Follow Vercel's DNS configuration instructions
+5. **Update Data**: Update `websiteUrl` in `public/data.json`
 
 ## 🔧 Customization Options
 
@@ -327,20 +349,42 @@ The portfolio is optimized for:
 - Review Tailwind CSS docs for styling problems
 - Check Vercel documentation for deployment issues
 
-## ✅ Checklist
+## ✅ Complete Setup Checklist
 
 Before deploying, ensure you have:
 
-- [ ] Profile picture (`public/avatar.jpg`)
-- [ ] Project images (`public/projects/` folder)
-- [ ] Resume/CV (`public/resume.pdf`)
+- [ ] Cloned the repository from master branch
+- [ ] Installed dependencies with `npm install`
 - [ ] Updated `public/data.json` with your information
-- [ ] All social media links working
-- [ ] Project links (GitHub, live demos) working
-- [ ] Contact information correct
-- [ ] Skills and experience updated
-- [ ] Education and certifications current
+- [ ] Added profile picture (`public/avatar.jpg`)
+- [ ] Added project images (`public/projects/` folder)
+- [ ] Added resume/CV (`public/resume.pdf`)
+- [ ] Updated all social media links
+- [ ] Updated project links (GitHub, live demos)
+- [ ] Verified contact information
+- [ ] Updated skills and experience
+- [ ] Updated education and certifications
+- [ ] Tested locally with `npm run dev`
+- [ ] Pushed changes to GitHub
+- [ ] Connected repository to Vercel
+- [ ] Successfully deployed to Vercel
 
-## 🎉 Ready to Deploy!
+## 🎉 Quick Deployment Summary
 
-Once you've completed the checklist, your portfolio is ready for deployment. The setup provides a professional, responsive, and SEO-optimized portfolio website that showcases your skills and projects effectively.
+1. **Clone**: `git clone https://github.com/its-kundan/dev-portfolio.git`
+2. **Customize**: Update `public/data.json` and add your images
+3. **Test**: Run `npm run dev` to test locally
+4. **Push**: Commit and push to GitHub
+5. **Deploy**: Connect to Vercel and deploy
+6. **Share**: Your portfolio is live! 🚀
+
+## 📞 Need Help?
+
+- **GitHub Issues**: Open an issue on the repository
+- **Vercel Support**: Check Vercel documentation
+- **Next.js Docs**: Visit nextjs.org/docs
+- **Tailwind CSS**: Visit tailwindcss.com/docs
+
+---
+
+**Your professional portfolio is ready to showcase your skills! 🎯**

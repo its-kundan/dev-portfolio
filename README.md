@@ -20,12 +20,13 @@ A stunning, responsive portfolio website built with Next.js, TypeScript, and Tai
 
 - Node.js 18+ 
 - npm or yarn
+- Git
 
 ### Installation
 
-1. **Clone the repository from the "fix" branch**
+1. **Clone the repository from the master branch**
    ```bash
-   git clone -b fix https://github.com/its-kundan/dev-portfolio.git
+   git clone https://github.com/its-kundan/dev-portfolio.git
    cd dev-portfolio
    ```
 
@@ -36,14 +37,20 @@ A stunning, responsive portfolio website built with Next.js, TypeScript, and Tai
    yarn install
    ```
 
-3. **Run the development server**
+3. **Customize your portfolio**
+   - Update `public/data.json` with your information
+   - Add your profile picture to `public/avatar.jpg`
+   - Add project images to `public/projects/` folder
+   - Add your resume to `public/resume.pdf`
+
+4. **Run the development server**
    ```bash
    npm run dev
    # or
    yarn dev
    ```
 
-4. **Open your browser**
+5. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ## 📁 Project Structure
@@ -68,7 +75,10 @@ dev-portfolio/
 │   ├── data.ts           # Data loading functions
 │   └── types.ts          # TypeScript type definitions
 ├── public/               # Static assets
-│   └── data.json         # Portfolio data (UPDATE THIS)
+│   ├── data.json         # Portfolio data (UPDATE THIS)
+│   ├── avatar.jpg        # Your profile picture
+│   ├── resume.pdf        # Your CV/Resume
+│   └── projects/         # Project images folder
 └── package.json          # Dependencies and scripts
 ```
 
@@ -236,18 +246,30 @@ Place your images in the `public/` directory:
 
 ### Vercel (Recommended)
 
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Deploy automatically
+1. **Push your customized code to GitHub**
+   ```bash
+   git add .
+   git commit -m "Customize portfolio with my information"
+   git push origin master
+   ```
 
-### Netlify
+2. **Deploy to Vercel**
+   - Go to [vercel.com](https://vercel.com)
+   - Sign up/Login with your GitHub account
+   - Click "New Project"
+   - Import your GitHub repository
+   - Vercel will automatically detect Next.js and deploy
 
-1. Build the project: `npm run build`
-2. Upload the `out/` directory to Netlify
+3. **Custom Domain (Optional)**
+   - In your Vercel project settings, go to "Domains"
+   - Add your custom domain
+   - Update the `websiteUrl` in `public/data.json`
 
-### Other Platforms
+### Alternative Deployment Options
 
-The project can be deployed to any platform that supports Next.js static exports.
+- **Netlify**: Build the project with `npm run build` and upload the `out/` directory
+- **GitHub Pages**: Configure for static export
+- **Any hosting platform** that supports Next.js
 
 ## 📱 Responsive Design
 
@@ -297,6 +319,15 @@ Before deploying, ensure you have:
 - [ ] Verified contact information
 - [ ] Updated skills and experience
 - [ ] Updated education and certifications
+- [ ] Pushed changes to GitHub
+- [ ] Connected repository to Vercel
+
+## 🎉 Quick Deployment Steps
+
+1. **Clone**: `git clone https://github.com/its-kundan/dev-portfolio.git`
+2. **Customize**: Update `public/data.json` and add your images
+3. **Deploy**: Push to GitHub and connect to Vercel
+4. **Share**: Your portfolio is live! 🚀
 
 ---
 
